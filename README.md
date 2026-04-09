@@ -1,0 +1,31 @@
+# LA Enforcer – Client
+
+## Présentation
+
+Ce programme permet d'envoyer les scores du jeu rétro DOS *LA Enforcer* vers un serveur distant.
+
+## Fonctionnalités
+
+- Lecture du fichier `SCORE.DAT` généré par le jeu
+- Dé-obfuscation des données via un chiffrement XOR
+- Envoi du score au format JSON vers une API REST Spring Boot
+- Prévention des envois multiples grâce à un flag local
+
+## Détails techniques
+
+Le fichier de score est volontairement obfusqué (XOR) afin de limiter les modifications triviales.  
+Ce client se charge de la lecture, du décodage et de la communication HTTP avec le serveur.
+
+## Choix technologique
+
+Ce projet est développé en Go pour sa simplicité et sa capacité à produire des exécutables multiplateformes.
+
+Je me suis aidé d’outils d’intelligence artificielle comme support ponctuel lors du développement. Ce projet s’inscrit dans une démarche de reconversion, dans laquelle je me forme actuellement à plusieurs technologies (Java, HTML, CSS, PHP). Le langage Go est ici exploré de manière plus occasionelle.
+
+## Auteur
+
+Julien Correard
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier LICENSE.
