@@ -10,6 +10,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 const maxLenName = 15
@@ -118,8 +119,12 @@ func postHighscore(hs Highscore, name string) error {
 		return err
 	}
 
-	resp, err := http.Post(
-		"http://localhost:8080/scores",
+	client := &http.Client{
+		Timeout: 10 * time.Second,
+	}
+
+	resp, err := client.Post(
+		"https://la-enforcer-server.onrender.com/scores",
 		"application/json",
 		bytes.NewBuffer(jsonData),
 	)
