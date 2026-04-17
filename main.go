@@ -90,9 +90,18 @@ func run() error {
 		return err
 	}
 
-	err = postHighscore(hs, name)
+	for i := 0; i < 3; i++ {
+		err = postHighscore(hs, name)
+		if err == nil {
+			break
+		}
+		if i < 2 {
+			time.Sleep(2 * time.Second)
+		}
+	}
+
 	if err != nil {
-		return fmt.Errorf("échec de l'envoi du score")
+		return fmt.Errorf("échec de l'envoi du score: %w", err)
 	}
 
 	fmt.Println("Score envoyé avec succès")
