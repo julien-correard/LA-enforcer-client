@@ -22,7 +22,7 @@ Ce client se charge de la lecture, du décodage et de la communication HTTP avec
 
 Ce projet est développé en Go pour sa simplicité et sa capacité à produire des exécutables multiplateformes.
 
-Je me suis aidé d’outils d’intelligence artificielle comme support ponctuel lors du développement. Ce projet s’inscrit dans une démarche de reconversion, dans laquelle je me forme actuellement à plusieurs technologies (Java, HTML, CSS, PHP). Le langage Go est ici exploré de manière plus occasionelle.
+Je me suis aidé d’outils d’intelligence artificielle comme support ponctuel lors du développement. Ce projet s’inscrit dans une démarche de reconversion, dans laquelle je me forme actuellement à plusieurs technologies (Java, HTML, CSS, PHP). Le langage Go est ici exploré de manière plus occasionnelle.
 
 ## Auteur
 
