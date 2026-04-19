@@ -37,6 +37,20 @@ func main() {
 
 func run() error {
 
+	baseURL := getBaseURL()
+
+	// On réveille le serveur
+	go func() {
+		client := &http.Client{
+			Timeout: 1 * time.Second,
+		}
+
+		resp, err := client.Get(baseURL + "/health")
+		if err == nil && resp != nil {
+			resp.Body.Close()
+		}
+	}()
+
 	fmt.Println("LA Enforcer score sender © 1992 Ironbyte studios")
 	fmt.Println("Lecture du fichier score.dat")
 
@@ -90,8 +104,13 @@ func run() error {
 		return err
 	}
 
+	err = waitForServerReady(baseURL+"/health", 240*time.Second)
+	if err != nil {
+		return err
+	}
+
 	for i := 0; i < 3; i++ {
-		err = postHighscore(hs, name)
+		err = postHighscore(baseURL, hs, name)
 		if err == nil {
 			break
 		}
@@ -115,7 +134,39 @@ func run() error {
 	return nil
 }
 
-func postHighscore(hs Highscore, name string) error {
+func waitForServerReady(url string, timeout time.Duration) error {
+
+	client := &http.Client{
+		Timeout: 2 * time.Second,
+	}
+
+	start := time.Now()
+	fmt.Print("Connexion au serveur (le réveil peut être un peu lent)")
+
+	for {
+		// timeout global
+		if time.Since(start) > timeout {
+			return fmt.Errorf("serveur indisponible après %v", timeout)
+		}
+
+		resp, err := client.Get(url)
+		if err == nil {
+			resp.Body.Close()
+
+			if resp.StatusCode == 200 {
+				fmt.Println(" OK")
+				return nil
+			}
+		}
+
+		// animation console rétro 😄
+		fmt.Print(".")
+
+		time.Sleep(2 * time.Second)
+	}
+}
+
+func postHighscore(baseURL string, hs Highscore, name string) error {
 	payload := map[string]interface{}{
 		"score":       hs.Score,
 		"date":        hs.Date,
@@ -133,7 +184,7 @@ func postHighscore(hs Highscore, name string) error {
 	}
 
 	resp, err := client.Post(
-		"https://la-enforcer-server.onrender.com/scores",
+		baseURL+"/scores",
 		"application/json",
 		bytes.NewBuffer(jsonData),
 	)
@@ -196,4 +247,13 @@ func xorCipher(data []byte, key byte) {
 func waitForKey() {
 	fmt.Println("\nAppuyez sur Entrée pour quitter...")
 	bufio.NewReader(os.Stdin).ReadBytes('\n')
+}
+
+func getBaseURL() string {
+	url := os.Getenv("API_URL")
+	if url == "" {
+		// fallback (utile en dev)
+		url = "https://la-enforcer-server.onrender.com"
+	}
+	return url
 }

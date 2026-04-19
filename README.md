@@ -10,6 +10,8 @@ Ce programme permet d'envoyer les scores du jeu rétro DOS *LA Enforcer* vers un
 - Dé-obfuscation des données via un chiffrement XOR
 - Envoi du score au format JSON vers une API REST Spring Boot
 - Prévention des envois multiples grâce à un flag local
+- Attente active de la disponibilité du serveur (utile pour hébergement avec mise en veille)
+- Réveil automatique du serveur via un appel HTTP en arrière-plan
 
 ## Détails techniques
 
