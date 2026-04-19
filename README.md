@@ -18,6 +18,11 @@ Ce programme permet d'envoyer les scores du jeu rétro DOS *LA Enforcer* vers un
 Le fichier de score est volontairement obfusqué (XOR) afin de limiter les modifications triviales.  
 Ce client se charge de la lecture, du décodage et de la communication HTTP avec le serveur.
 
+Ce projet complète un système global comprenant :
+- un jeu en C (génération des scores)
+- une interface web en JavaScript (consultation des scores)
+- un serveur Spring Boot (stockage des scores)
+
 ## Choix technologique
 
 Ce projet est développé en Go pour sa simplicité et sa capacité à produire des exécutables multiplateformes.
