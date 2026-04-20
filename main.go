@@ -245,6 +245,7 @@ func xorCipher(data []byte, key byte) {
 }
 
 func waitForKey() {
+	fmt.Println("\nLes scores sont consultables ici : https://julien-correard.github.io/LA-enforcer-web/")
 	fmt.Println("\nAppuyez sur Entrée pour quitter...")
 	bufio.NewReader(os.Stdin).ReadBytes('\n')
 }

@@ -24,11 +24,13 @@ Ce projet complète un système global comprenant :
 - un [jeu en C](https://github.com/julien-correard/LA-enforcer-game) (génération des scores)
 - un [client en Go](https://github.com/julien-correard/LA-enforcer-client) (envoi des scores)
 - un [serveur Spring Boot](https://github.com/julien-correard/LA-enforcer-server) (stockage des scores)
-- une [interface web en JavaScript](https://github.com/julien-correard/LA-enforcer-web) (consultation des scores)
+- une [interface web en JavaScript](https://github.com/julien-correard/LA-enforcer-web) (consultation des scores, disponible [ici](https://julien-correard.github.io/LA-enforcer-web/))
+
+
 
 ## Choix technologique
 
-Ce projet est développé en Go pour sa simplicité et sa capacité à produire des exécutables multiplateformes.
+Ce projet est développé en Go pour sa simplicité et sa capacité à produire des exécutables multiplateformes et autonomes.
 
 Je me suis aidé d’outils d’intelligence artificielle comme support ponctuel lors du développement. Ce projet s’inscrit dans une démarche de reconversion, dans laquelle je me forme actuellement à plusieurs technologies (Java, HTML, CSS, PHP). Le langage Go est ici exploré de manière plus occasionnelle.
 
