@@ -18,10 +18,13 @@ Ce programme permet d'envoyer les scores du jeu rétro DOS *LA Enforcer* vers un
 Le fichier de score est volontairement obfusqué (XOR) afin de limiter les modifications triviales.  
 Ce client se charge de la lecture, du décodage et de la communication HTTP avec le serveur.
 
+## Ecosystème du projet
+
 Ce projet complète un système global comprenant :
-- un jeu en C (génération des scores)
-- une interface web en JavaScript (consultation des scores)
-- un serveur Spring Boot (stockage des scores)
+- un [jeu en C](https://github.com/julien-correard/LA-enforcer-game) (génération des scores)
+- un [client en Go](https://github.com/julien-correard/LA-enforcer-client) (envoi des scores)
+- un [serveur Spring Boot](https://github.com/julien-correard/LA-enforcer-server) (stockage des scores)
+- une [interface web en JavaScript](https://github.com/julien-correard/LA-enforcer-web) (consultation des scores)
 
 ## Choix technologique
 
